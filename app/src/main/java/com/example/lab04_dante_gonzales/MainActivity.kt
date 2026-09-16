@@ -20,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.material3.Slider
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +47,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
 
     var checked by remember { mutableStateOf(false) }
+    var sliderValue by remember { mutableStateOf(0f) }
 
     Card(
         modifier = modifier.padding(16.dp)
@@ -58,6 +60,11 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             Switch(
                 checked = checked,
                 onCheckedChange = { checked = it }
+            )
+
+            Slider(
+                value = sliderValue,
+                onValueChange = { sliderValue = it }
             )
         }
     }
