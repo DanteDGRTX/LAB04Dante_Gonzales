@@ -14,7 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lab04_dante_gonzales.ui.theme.LAB04Dante_GonzalesTheme
-
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Switch
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,13 +45,21 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
 
+    var checked by remember { mutableStateOf(false) }
+
     Card(
         modifier = modifier.padding(16.dp)
     ) {
-        Text(
-            text = "Hola, $name",
+        Column(
             modifier = Modifier.padding(16.dp)
-        )
+        ) {
+            Text(text = "Hola, $name")
+
+            Switch(
+                checked = checked,
+                onCheckedChange = { checked = it }
+            )
+        }
     }
 }
 
